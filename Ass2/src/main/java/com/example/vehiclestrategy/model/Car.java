@@ -1,11 +1,13 @@
 package com.example.vehiclestrategy.model;
 
-import com.example.vehiclestrategy.strategy.impl.EngineMove;
+import com.example.vehiclestrategy.fuel.impl.PetrolFuel;
+import com.example.vehiclestrategy.strategy.impl.NormalMode;
 
 public class Car extends Vehicle {
 
     public Car() {
-        this.moveStrategy = new EngineMove();
+        this.fuelTypeStrategy = new PetrolFuel();
+        this.moveStrategy = new NormalMode();
     }
 
     @Override

@@ -1,11 +1,14 @@
 package com.example.vehiclestrategy.model;
 
-import com.example.vehiclestrategy.strategy.impl.PedalMove;
+import com.example.vehiclestrategy.fuel.impl.PetrolFuel;
+import com.example.vehiclestrategy.strategy.impl.EcoMode;
+import com.example.vehiclestrategy.strategy.impl.SportMode;
 
 public class Bike extends Vehicle {
 
     public Bike() {
-        this.moveStrategy = new PedalMove();
+        this.fuelTypeStrategy = new PetrolFuel();
+        this.moveStrategy = new EcoMode();
     }
 
     @Override
