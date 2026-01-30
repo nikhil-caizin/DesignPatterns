@@ -1,16 +1,16 @@
 package strategy;
 
 
-import com.example.vehiclestrategy.strategy.impl.ElectricMove;
+import com.example.vehiclestrategy.strategy.impl.EcoMode;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
-class ElectricMoveTest {
+class EcoModeTest {
 
     @Test
     void electricMoveShouldExecuteWithoutError() {
-        ElectricMove electricMove = new ElectricMove();
+        EcoMode electricMove = new EcoMode();
         assertDoesNotThrow(electricMove::move);
     }
 }

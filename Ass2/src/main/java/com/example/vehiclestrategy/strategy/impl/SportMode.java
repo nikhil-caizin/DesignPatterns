@@ -2,9 +2,9 @@ package com.example.vehiclestrategy.strategy.impl;
 
 import com.example.vehiclestrategy.strategy.MoveStrategy;
 
-public class EngineMove implements MoveStrategy {
+public class SportMode implements MoveStrategy {
     @Override
     public void move() {
-        System.out.println("Moving using an engine");
+        System.out.println("Moving in SPORT mode: aggressive acceleration, high performance");
     }
 }
