@@ -1,32 +1,31 @@
-package model;
+package fuel;
 
-import com.example.vehiclestrategy.model.Bike;
-import com.example.vehiclestrategy.model.Vehicle;
+import com.example.vehiclestrategy.fuel.FuelTypeStrategy;
+import com.example.vehiclestrategy.fuel.impl.HydrogenFuel;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class BikeTest {
+class HydrogenFuelTest {
 
     @Test
-    void bikeShouldUsePetrolAndEcoMode() {
+    void shouldUseHydrogenFuel() {
         PrintStream originalOut = System.out;
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
         try {
-            Vehicle bike = new Bike();
-            bike.move();
+            FuelTypeStrategy hydrogenFuel = new HydrogenFuel();
+            hydrogenFuel.useFuel();
         } finally {
             System.setOut(originalOut);
         }
 
         String output = out.toString();
-
-        assertTrue(output.contains("PETROL"));
-        assertTrue(output.contains("ECO mode"));
+        assertTrue(output.contains("HYDROGEN"));
     }
 }
+

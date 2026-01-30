@@ -5,18 +5,31 @@ import com.example.vehiclestrategy.model.Vehicle;
 import com.example.vehiclestrategy.strategy.impl.SportMode;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BusTest {
 
     @Test
-    void scooterShouldChangeStrategyAtRuntime() {
-        Vehicle scooter = new Bus();
+    void busShouldUseHydrogenAndEcoMode() {
+        PrintStream originalOut = System.out;
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
 
-        assertDoesNotThrow(scooter::performMove);
+        try {
+            Vehicle bus = new Bus();
+            bus.move();
+        } finally {
+            System.setOut(originalOut);
+        }
 
-        scooter.setMoveStrategy(new SportMode());
-        assertDoesNotThrow(scooter::performMove);
+        String output = out.toString();
+
+        assertTrue(output.contains("HYDROGEN"));
+        assertTrue(output.contains("ECO mode"));
     }
 }
 
